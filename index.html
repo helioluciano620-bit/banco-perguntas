@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Banco de perguntas pessoais para estudar e testar conhecimentos.">
+  <title>Banco de Perguntas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Banco de Perguntas</h1>
+    <p>Guarda o que queres aprender e testa-te a ti próprio.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Secções">
+    <button class="tab active" role="tab" data-tab="lista" aria-selected="true">Todas as perguntas</button>
+    <button class="tab" role="tab" data-tab="adicionar" aria-selected="false" id="tab-adicionar">Adicionar pergunta</button>
+    <button class="tab" role="tab" data-tab="teste" aria-selected="false">Modo de teste</button>
+  </nav>
+
+  <p id="mensagem" class="mensagem" role="status" aria-live="polite" hidden></p>
+
+  <main>
+    <!-- Aba: Todas as perguntas -->
+    <section id="lista" class="painel active" aria-labelledby="titulo-lista">
+      <div class="barra">
+        <h2 id="titulo-lista">Todas as perguntas</h2>
+        <label class="filtro">Categoria
+          <select id="filtro-categoria"></select>
+        </label>
+      </div>
+      <ul id="lista-perguntas" class="cartoes"></ul>
+    </section>
+
+    <!-- Aba: Adicionar pergunta -->
+    <section id="adicionar" class="painel" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Adicionar pergunta</h2>
+      <form id="form-pergunta" novalidate>
+        <input type="hidden" id="pergunta-id">
+
+        <label for="pergunta">Pergunta</label>
+        <textarea id="pergunta" rows="3" placeholder="O que queres recordar?"></textarea>
+        <span class="erro" id="erro-pergunta"></span>
+
+        <label for="resposta">Resposta</label>
+        <textarea id="resposta" rows="3" placeholder="A resposta correta"></textarea>
+        <span class="erro" id="erro-resposta"></span>
+
+        <label for="categoria">Categoria</label>
+        <select id="categoria"></select>
+        <span class="erro" id="erro-categoria"></span>
+
+        <div class="acoes">
+          <button type="submit" id="btn-guardar" class="btn primario">Guardar pergunta</button>
+          <button type="button" id="btn-cancelar" class="btn" hidden>Cancelar edição</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Aba: Modo de teste -->
+    <section id="teste" class="painel" aria-labelledby="titulo-teste">
+      <h2 id="titulo-teste">Modo de teste</h2>
+      <div id="teste-vazio" class="vazio" hidden>
+        <p>Ainda não tens perguntas para testar.</p>
+        <button class="btn primario" id="ir-adicionar">Adicionar a primeira pergunta</button>
+      </div>
+      <div id="teste-area">
+        <p id="teste-contador" class="contador"></p>
+        <article class="cartao-teste">
+          <p class="categoria-tag" id="teste-categoria"></p>
+          <p class="teste-pergunta" id="teste-pergunta"></p>
+          <p class="teste-resposta" id="teste-resposta" hidden></p>
+        </article>
+        <div class="acoes centro">
+          <button class="btn" id="btn-anterior">Pergunta anterior</button>
+          <button class="btn primario" id="btn-mostrar">Mostrar resposta</button>
+          <button class="btn" id="btn-seguinte">Pergunta seguinte</button>
+        </div>
+        <div class="acoes centro">
+          <button class="btn" id="btn-baralhar">Baralhar perguntas</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Projeto de Aplicações Web I · Os dados ficam guardados no teu navegador (localStorage).</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
